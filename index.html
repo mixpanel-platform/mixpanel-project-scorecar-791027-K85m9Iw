@@ -63,6 +63,7 @@
             
             // Project uses events - tally up event data avgs - TODO:might want to change to TOTAL
             if(projects[page][project_id]['$properties']['Event Count (unique)'] > 0){
+              console.log(projects[page][project_id]);
               projects_w_events++;
               total_event_similarity += projects[page][project_id]['$properties']['Avg Event Similarity'];
               total_date_props += projects[page][project_id]['$properties']['Date Prop Count'];
