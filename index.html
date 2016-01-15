@@ -25,7 +25,7 @@
           MP.api.people({'page':page_number}).done(function(results) {
             console.log(results.values());
             peopleQueryRecursive(total,results.values()['page_size'],results.values()['page_number']);
-          }
+          });
         }
       }
     </script>
