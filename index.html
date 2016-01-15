@@ -25,7 +25,7 @@
         else{
           MP.api.people({'page':page_number, 'session_id':session_id}).done(function(results) {
             //console.log(results.values());
-             console.log(page_size+" <- page size... total _>"+total);
+             console.log(results.values()['page_size']+" <- page size... total _>"+total);
             peopleQueryRecursive(total,results.values()['page_size'],results.values()['page'], session_id);
           });
         }
