@@ -12,7 +12,7 @@
       MP.api.people({}).done(function(results) {
           console.log(results.values());
           var total = results.values()['total'];
-          peopleQueryRecursive(total, results.values()['page_size'],results.values()['page_number'], results.values()['session_id']);
+          peopleQueryRecursive(total, results.values()['page_size'],results.values()['page'], results.values()['session_id']);
       });
       
       function peopleQueryRecursive(total, page_size, page_number, session_id){
@@ -24,7 +24,7 @@
         else{
           MP.api.people({'page':page_number, 'session_id':session_id}).done(function(results) {
             console.log(results.values());
-            peopleQueryRecursive(total,results.values()['page_size'],results.values()['page_number'], session_id);
+            peopleQueryRecursive(total,results.values()['page_size'],results.values()['page'], session_id);
           });
         }
       }
