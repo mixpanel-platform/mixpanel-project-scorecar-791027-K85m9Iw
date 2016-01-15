@@ -129,7 +129,7 @@
       }
       else{
         MP.api.people({'page':page_number, 'session_id':session_id}).done(function(results) {
-          console.log(results.values());
+          //console.log(results.values());
           projects.push(results.values()['results']);
           peopleQueryRecursive(total,results.values()['page'], session_id);
         });
