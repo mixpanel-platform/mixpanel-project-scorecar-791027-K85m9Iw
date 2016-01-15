@@ -15,6 +15,7 @@
         var total = results.values()['total'];
         projects.push(results.values()['results']);
         peopleQueryRecursive(total, results.values()['page'], results.values()['session_id']);
+        console.log('projects.......');
         console.log(projects);
     });
     
