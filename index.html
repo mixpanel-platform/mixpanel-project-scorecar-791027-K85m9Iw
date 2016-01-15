@@ -9,26 +9,30 @@
   <body class="mixpanel-platform-body">
     
     <script>
-      MP.api.people({}).done(function(results) {
-          console.log(results.values());
-          var total = results.values()['total'];
-          peopleQueryRecursive(total, results.values()['page'], results.values()['session_id']);
-      });
-      
-      function peopleQueryRecursive(total, page_number, session_id){
-        total = total - 1000
-        page_number++;
-        //return;
-        if(total <= 0){
-          return;
-        }
-        else{
-          MP.api.people({'page':page_number, 'session_id':session_id}).done(function(results) {
-            console.log(results.values());
-            peopleQueryRecursive(total,results.values()['page'], session_id);
-          });
-        }
+    var projects = [];
+    MP.api.people({}).done(function(results) {
+        console.log(results.values());
+        var total = results.values()['total'];
+        projects.push(results.values()['results']);
+        peopleQueryRecursive(total, results.values()['page'], results.values()['session_id']);
+        console.log(projects);
+    });
+    
+    function peopleQueryRecursive(total, page_number, session_id){
+      total = total - 1000
+      page_number++;
+      //return;
+      if(total <= 0){
+        return;
       }
+      else{
+        MP.api.people({'page':page_number, 'session_id':session_id}).done(function(results) {
+          console.log(results.values());
+          projects.push(results.values()['results']);
+          peopleQueryRecursive(total,results.values()['page'], session_id);
+        });
+      }
+    }
     </script>
   </body>
 </html>
