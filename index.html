@@ -22,7 +22,7 @@
   
   <body class="mixpanel-platform-body">
     
-    <div>Avg Event Similarity: <span id="avg_event_similarity" class="stat">34</span>%</div>
+    <div>Avg Event Similarity: <span id="avg_event_similarity" class="stat"></span>%</div>
     
     <script>
     var projects = [];
@@ -108,6 +108,8 @@
               }
             }
             */
+            
+            document.getElementById("avg_event_similarity").innerHTML = '34';
             
           }
         }
