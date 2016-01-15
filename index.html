@@ -18,6 +18,7 @@
       function peopleQueryRecursive(total, page_size, page_number, session_id){
         total = total - page_size
         page_number++;
+        return;
         if(total == 0){
           return;
         }
@@ -27,7 +28,6 @@
             peopleQueryRecursive(total,results.values()['page_size'],results.values()['page'], session_id);
           });
         }
-        return;
       }
     </script>
   </body>
