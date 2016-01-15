@@ -64,6 +64,7 @@
             // Project uses events - tally up event data avgs - TODO:might want to change to TOTAL
             if(projects[page][project_id]['$properties']['Event Count (unique)'] > 0){
               projects_w_events++;
+              console.log(projects_w_events);
               total_event_similarity += projects[page][project_id]['$properties']['Avg Event Similarity'];
               total_date_props += projects[page][project_id]['$properties']['Date Prop Count'];
               total_event_count += projects[page][project_id]['$properties']['Event Count (total)'];
@@ -114,8 +115,6 @@
             
           }
         }
-        alert(total_event_similarity);
-        alert(projects_w_events);
         document.getElementById("avg_event_similarity").innerHTML = total_event_similarity/projects_w_events;
 
     });
