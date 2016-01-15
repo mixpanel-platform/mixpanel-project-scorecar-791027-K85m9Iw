@@ -11,7 +11,22 @@
     <script>
       MP.api.people({}).done(function(results) {
           console.log(results.values());
+          var total = results.values()['total'];
+          peopleQueryRecursive(total, results.values()['page_size'],results.values()['page_number']);
       });
+      
+      function peopleQueryRecursive(total, page_size, page_number){
+        total = total - page_size
+        page_number++;
+        if(total == 0){
+          return;
+        }
+        else{
+          MP.api.people({'page':page_number}).done(function(results) {
+            console.log(results.values());
+            peopleQueryRecursive(total,results.values()['page_size'],results.values()['page_number']);
+          }
+        }
     </script>
   </body>
 </html>
