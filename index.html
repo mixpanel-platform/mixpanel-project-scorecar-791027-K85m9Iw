@@ -22,6 +22,8 @@
         var projects_w_events = 0;
         var total_active_campaigns = 0;
         var total_event_similarity = 0;
+        var total_date_props = 0;
+        var total_dup_profs = 0;
 
         for(var page = 0; page<projects.length; page++){
           for(var project_id = 0; project< projects[page].length; project_id++){
@@ -30,12 +32,15 @@
             if(projects[page][project_id]['$properties']['Event Count (unique)'] > 0){
               projects_w_events++;
               total_event_similarity += projects[page][project_id]['$properties']['Avg Event Similarity'];
+              total_date_props += projects[page][project_id]['$properties']['Date Prop Count'];
+              
             }
             
             // Project uses people - vally up people data avgs
             if(projects[page][project_id]['$properties']['People Prof Count'] > 0){
               projects_w_people++;
               total_active_campaigns += projects[page][project_id]['$properties']['Active Campaign Count'];
+              total_dup_profs += projects[page][project_id]['$properties']['Duplicate People Prof Count']
             }
           }
         }
