@@ -12,19 +12,19 @@
       MP.api.people({}).done(function(results) {
           console.log(results.values());
           var total = results.values()['total'];
-          peopleQueryRecursive(total, results.values()['page_size'],results.values()['page_number']);
+          peopleQueryRecursive(total, results.values()['page_size'],results.values()['page_number'], results.values()['session_id']);
       });
       
-      function peopleQueryRecursive(total, page_size, page_number){
+      function peopleQueryRecursive(total, page_size, page_number, session_id){
         total = total - page_size
         page_number++;
         if(total == 0){
           return;
         }
         else{
-          MP.api.people({'page':page_number}).done(function(results) {
+          MP.api.people({'page':page_number, 'session_id':session_id}).done(function(results) {
             console.log(results.values());
-            peopleQueryRecursive(total,results.values()['page_size'],results.values()['page_number']);
+            peopleQueryRecursive(total,results.values()['page_size'],results.values()['page_number'], session_id);
           });
         }
       }
