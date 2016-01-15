@@ -20,6 +20,7 @@
   </head>
   
   <body class="mixpanel-platform-body">
+    
     <h1>Mixpanel Project Statistics</h1><br clear="all" /><br clear="all" />
     
     <div>Avg Event Similarity: <span id="avg_event_similarity" class="stat"></span>%</div>
@@ -109,8 +110,7 @@
             }
             */
             
-            var span = document.getElementById("avg_event_similarity");
-            span.innerHTML = '34';
+            document.getElementById("avg_event_similarity").innerHTML = '34';
             
           }
         }
