@@ -19,12 +19,12 @@
         total = total - page_size
         page_number++;
         return;
-        if(total == 0){
+        if(page_number == 3){
           return;
         }
         else{
           MP.api.people({'page':page_number, 'session_id':session_id}).done(function(results) {
-            //console.log(results.values());
+            console.log(results.values());
              console.log(results.values()['page_size']+" <- page size... total _>"+total);
             peopleQueryRecursive(total,results.values()['page_size'],results.values()['page'], session_id);
           });
