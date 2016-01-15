@@ -24,16 +24,26 @@
         var total_event_similarity = 0;
         var total_date_props = 0;
         var total_dup_profs = 0;
+        var total_dup_to_prof = 0;
+        var total_event_count = 0;
+        var total_unique_events = 0;
+        var identity_mgmt_osses = {};
+        identity_mgmt_isses['Yes'] = 0;
+        identity_mgmt_issues['No'] = 0;
+        var total_int_super_props = 0;
+        var libraries = {}
 
         for(var page = 0; page<projects.length; page++){
-          for(var project_id = 0; project< projects[page].length; project_id++){
+          for(var project_id = 0; project_id< projects[page].length; project_id++){
             
             // Project uses events - tally up event data avgs - TODO:might want to change to TOTAL
             if(projects[page][project_id]['$properties']['Event Count (unique)'] > 0){
               projects_w_events++;
               total_event_similarity += projects[page][project_id]['$properties']['Avg Event Similarity'];
               total_date_props += projects[page][project_id]['$properties']['Date Prop Count'];
-              
+              total_event_count += projects[page][project_id]['$properties']['Event Count (total)'];
+              total_unique_events += projects[page][project_id]['$properties']['Event Count (unique)'];
+              total_int_super_props += projects[page][project_id]['$properties']['Int Super Prop Count'];
             }
             
             // Project uses people - vally up people data avgs
@@ -41,7 +51,30 @@
               projects_w_people++;
               total_active_campaigns += projects[page][project_id]['$properties']['Active Campaign Count'];
               total_dup_profs += projects[page][project_id]['$properties']['Duplicate People Prof Count']
+              total_dup_to_prof += projects[page][project_id]['$properties']['Duplicates/Profile Ratio']
+              if (projects[page][project_id]['$properties']['Identity MGMT Issue'] == 'Yes'){
+                identity_mgmt_issues['Yes']++;
+              }
+              else{
+                identity_mgmt_issues["No"]++;
+              }
+              
             }
+            
+            /*library aggregate... more difficult than anticipated
+            // Libraries (regardless of events/props)
+            if("Libraries"in projects[page][project_id]['$properties']){
+              if(projects[page][project_id]['$properties']['Libraries'] != '' || projects[page][project_id]['$properties']['Libraries'] != undefined){
+                if(projects[page][project_id]['$properties']['Libraries'] in libraries){
+                  libraries[projects[page][project_id]['$properties']['Libraries ']]
+                }
+                else{
+                  
+                }
+              }
+            }
+            */
+            
           }
         }
         
