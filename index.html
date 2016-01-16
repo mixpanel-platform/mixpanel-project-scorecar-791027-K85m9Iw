@@ -23,7 +23,7 @@
     
     <h1>Mixpanel Project Statistics</h1><br clear="all" /><br clear="all" />
     
-    <div>Avg Event Similarity: <span id="avg_event_similarity" class="stat"></span>%</div>
+    <div>Avg Event Similarity: <span id="avg_event_similarity" class="stat"></span>%</div><br clear="all" />
     
     <script>
     var projects = [];
@@ -135,8 +135,8 @@
           }
         }
       }
-      console.log(total_event_similarity+" and "+projects_w_events);
       document.getElementById("avg_event_similarity").innerHTML = total_event_similarity/projects_w_events;
+      document
     }
     </script>
   </body>
