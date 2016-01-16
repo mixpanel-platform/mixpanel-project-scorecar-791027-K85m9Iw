@@ -24,6 +24,11 @@
     <h1>Mixpanel Project Statistics</h1><br clear="all" /><br clear="all" />
     
     <div>Avg Event Similarity: <span id="avg_event_similarity" class="stat"></span>%</div><br clear="all" />
+    <div>Avg Date Super Props: <span id="avg_date_super_props" class="stat"></span></div><br clear="all" />
+    <div>Avg Duplicate People Profs: <span id="duplicate_people_profs" class="stat"></span></div><br clear="all" />
+    <div>Avg Duplicate to Profile Ratio: <span id="dup_to_prof_ratio" class="stat"></span></div><br clear="all" />
+    <div>Avg Total Event Count: <span id="avg_total_event_count" class="stat"></span></div><br clear="all" />
+    <div>Avg Unique Event Count: <span id="avg_unique_event_count" class="stat"></span></div><br clear="all" />
     
     <script>
     var projects = [];
@@ -77,7 +82,6 @@
       var total_super_prop_count = 0;
       var using_segment = 0;
       for(var page = 0; page<projects.length; page++){
-        console.log(projects[page].length);
         for(var project_id = 0; project_id< 1000; project_id++){
           if(project_id in projects[page]){
             // Project uses events - tally up event data avgs - TODO:might want to change to TOTAL
@@ -136,7 +140,11 @@
         }
       }
       document.getElementById("avg_event_similarity").innerHTML = total_event_similarity/projects_w_events;
-      document
+      document.document.getElementById("avg_date_super_props").innerHTML = total_date_props/projects_w_events;
+      document.getElementById("duplicate_people_profs").innerHTML = total_dup_profs/projects_w_people;
+      document.getElementById("dup_to_prof_ratio").innerHTML = total_dup_to_prof / projects_w_people;
+      document.getElementById("avg_total_event_count").innerHTML = total_event_count /projects_w_events;
+      document.getElementById("avg_unique_event_count").innerHTML = total_unique_events/projects_w_events;
     }
     </script>
   </body>
