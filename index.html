@@ -28,13 +28,10 @@
     <script>
     var projects = [];
     MP.api.people({}).done(function(results) {
-        console.log(results.values());
         var total = results.values()['total'];
         projects.push(results.values()['results']);
         peopleQueryRecursive(total, results.values()['page'], results.values()['session_id']);
-        console.log(projects);
-        console.log(projects.length);
-        
+
         // Vars for avgs 
         var projects_w_people = 0;
         var projects_w_events = 0;
@@ -59,7 +56,6 @@
         var total_super_prop_count = 0;
         var using_segment = 0;
         for(var page = 0; page<projects[0].length; page++){
-          console.log(page);
           for(var project_id = 0; project_id< projects[0][page].length; project_id++){
             // Project uses events - tally up event data avgs - TODO:might want to change to TOTAL
             if(projects[0][page][project_id]['$properties']['Event Count (unique)'] > 0){
@@ -123,6 +119,7 @@
       page_number++;
       //return;
       if(total <= 0){
+        completionFunction(projects);
         return;
       }
       else{
@@ -132,6 +129,10 @@
           peopleQueryRecursive(total,results.values()['page'], session_id);
         });
       }
+    }
+    
+    function completionFunction(projects){
+      console.log(projects.length);
     }
     </script>
   </body>
