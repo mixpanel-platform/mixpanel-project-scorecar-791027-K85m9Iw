@@ -59,6 +59,7 @@
         var using_segment = 0;
         console.log(projects[0]);
         for(var page = 0; page<projects[0].length; page++){
+          console.log(page);
           for(var project_id = 0; project_id< projects[0][page].length; project_id++){
             // Project uses events - tally up event data avgs - TODO:might want to change to TOTAL
             if(projects[0][page][project_id]['$properties']['Event Count (unique)'] > 0){
