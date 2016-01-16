@@ -32,7 +32,7 @@
         var total = results.values()['total'];
         projects.push(results.values()['results']);
         peopleQueryRecursive(total, results.values()['page'], results.values()['session_id']);
-        console.log(projects);
+        console.log(projects.length);
         
         // Vars for avgs 
         var projects_w_people = 0;
